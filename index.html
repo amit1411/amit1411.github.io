@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
 <body>
-
+<p class="animate__animated animate__bounce" id="breakfast"></p>
 <script>
 function getWeekNumber(d) {
     // Copy date so don't modify original
@@ -18,7 +24,27 @@ function getWeekNumber(d) {
 }
 
 var result = getWeekNumber(new Date());
-document.write('It\'s currently week ' + result[1] + ' of ' + result[0] + 'The day of the week is:' + ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][myDate.getDay()]);
+var day = new Date();
+var dayNames = new Array ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+var dayofweek = dayNames[day.getDay()]
+var img = document.createElement('img'); 
+img.src = 'http://i.stack.imgur.com/SBv4T.gif'; 
+//document.write('It\'s currently week ' + result[1] + ' of ' + result[0] + ' The day of the week is:' + dayofweek);
+//check if the number is even
+if(result[1] % 2 == 0 && (dayofweek == 'Monday' || dayofweek == 'Wednesday' || dayofweek == 'Friday')) {
+    document.getElementById("breakfast").innerHTML = "It\'s breakfast day";;
+}
+
+// if the number is odd
+else if (result[1] % 2 != 0 && (dayofweek == 'Tuesday' || dayofweek == 'Thursday' )) {
+    document.getElementById("breakfast").innerHTML = "It\'s breakfast day";;
+}
+
+else {
+
+document.getElementById("breakfast").appendChild(img);
+
+}
 </script> 
 
 </body>
